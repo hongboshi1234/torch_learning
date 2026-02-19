@@ -91,6 +91,7 @@ In the CUDA timeline:
 What to look for:
 - `Memcpy HtoD` and `cublasGemmEx` / compute kernels overlap across time
 - Overlap is easiest to see when zoomed out to include multiple iterations
+- you can also see that customized record names like "test record iter2" or "test record compute2 " on top of the actuall kernel runs
 
 ---
 
