@@ -40,13 +40,13 @@ with torch.profiler.profile(
         prev = (i - 1) % 2
 
         # 1) 先启动下一批 copy（cur）
-        with torch.profiler.record_function("test record iter %d" % iter):
+        with torch.profiler.record_function("test record iter %d" % i):
             with torch.cuda.stream(copy_stream):
                 d[cur].copy_(h[cur], non_blocking=True)
                 copy_done[cur].record(copy_stream)
 
         # 2) 同时在另一个 stream 里算上一批（prev）
-        with torch.profiler.record_function("test record compute %d" % iter):
+        with torch.profiler.record_function("test record compute %d" % i):
             with torch.cuda.stream(compute_stream):
                 compute_stream.wait_event(copy_done[prev])
                 out = d[prev] @ W
