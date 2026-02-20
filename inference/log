@@ -1,0 +1,6 @@
+import torch
+
+Class Attention(torch.module):
+    def __init__(self, head_dim, hidden_size):
+        self.q_proj = torch.nn(head_dim, hidden_size)
+        

@@ -1,0 +1,30 @@
+Class Attention(torch.nn.Module)
+torch.nn.linear(in_size, out_size,dtype=None)
+torch.matmul(A,B) # if A is (b, m, n) and  B is (b, n, m), output is (b,m,m)
+torch.rand([2,3,4]) # uniform distribution between 0,1
+torch.randn([2,3,4])# norm distribution 
+torch.randint(high, low, size)
+
+torch.cat(a,b, dim=0) # (2,3) (2,3) -> (4,3)
+torch.cat([a,b,c]) -> (6,3)
+torch.stack() (2,3) (2,3) -> (2,2,3)
+
+
+torch.permute(A, [2,1,0]) # not shape, but position!!
+a.max(dim=-1, keepdim=True).values # (b,l,l) -> b,l,1 
+a.max(dim=-1).values # (b,l,l) -> b,l 
+
+
+
+# operation on sum or menus the same number for last dimention.
+aa=torch.randn(2,3)
+bb=torch.randn(2)
+aa-bb # error
+
+aa=torch.randn(2,3)
+bb=torch.randn(2,3)
+aa-bb # (2,3)
+
+aa=torch.randn(2,3)
+bb=torch.randn(2, 1)
+aa-bb # (2,3)
