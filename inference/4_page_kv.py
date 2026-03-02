@@ -1,6 +1,15 @@
 # without page attetnion
 import torch
 import math
+
+class PagedKV:
+    def __init__(self, width)
+        self.w = width
+        self.k = 
+        self.v 
+    
+    def 
+
 class Attention(torch.nn.Module):
     def __init__(self, hidden_size, head_dim, max_len):
         super().__init__()
@@ -36,3 +45,10 @@ attention = Attention(4096, 1024, max_len)
 h = torch.randn(input_len, hidden_size)
 h_out = attention(h)
 assert h_out.shape == (input_len, hidden_size)
+
+# k [k1, k2, k3, k4, k5]
+# k1: hidden size one dimentional
+# k: L,  hidden_size. we can ignore layer_id dim and batch dim . k L, hiddensize!
+# instead of store k1, k2, ... k5 in a larger tensor, we store that in
+# [k1,k2,k3,k4]
+# [k5,k6,k7,k8]

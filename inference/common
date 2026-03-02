@@ -28,3 +28,21 @@ aa-bb # (2,3)
 aa=torch.randn(2,3)
 bb=torch.randn(2, 1)
 aa-bb # (2,3)
+
+
+
+# distributed
+torchrun --nproc_per_node=2 test.py
+torch.distributed.init_process_group(backend='nccl')
+torch.distributed.get_rank()
+torch.distributed.get_world_size()
+torch.cuda.set_device(local_rank)
+torch.distributed.destroy_process_group()
+
+torch.distributed.all_reduce(tensor, op=torch.distributed.ReduceOp.SUM, group=tp_group)
+
+torch.distributed.all_gather(tensor_list, etnsor, group=tp_group)
+
+torch.distributed.broadcast(tensor, src=0, group=tp_group)
+torch.distributed.send # for PP
+torch.distributed.recv  # for PP
